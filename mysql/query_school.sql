@@ -127,8 +127,12 @@ INSERT INTO takes_course VALUES
 SELECT *
 FROM teacher;
 
-SELECT last_name, dob
-FROM teacher;
+SELECT DISTINCT last_name, dob
+FROM teacher
+AS teacher_sub;
+
+SELECT COUNT(client_name) AS c_name
+FROM client;
 
 SELECT *
 FROM client
@@ -147,13 +151,23 @@ SELECT course.course_id, course.course_name, course.language, client.client_name
 FROM course
 JOIN client
 ON course.client_ref = client.client_id
-WHERE course.in_school = FALSE;
+WHERE course.course_name LIKE 'f%';
+
+CREATE VIEW course_info AS
+SELECT course_id, course_name
+FROM course;
+
+SELECT *
+FROM course_info
+LIMIT 5;
 
 UPDATE client
 SET address = '23 Fingiertweg, 14534 Berlin'
 WHERE client_id = 101;
 
 DELETE FROM course WHERE course_id = 20;
+
+DROP TABLE takes_course;
 
 INSERT INTO course VALUES
 (20, 'Fortgeschrittenes Russisch', 'RUS', 'C1',  4, '2020-04-08',  FALSE, 5, 103);

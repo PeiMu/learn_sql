@@ -30,6 +30,10 @@ CREATE TABLE tb_name(
   FOREIGN KEY(column_name) REFERENCES ref_tb_name(column_name_from_ref_tb)
     ON DELETE CASCADE,
 );
+
+CREATE VIEW tb_alias AS
+SELECT column_1_name, column_2_name, ...
+FROM tb_name;
 ```
 
 add reference:
@@ -49,13 +53,24 @@ select values:
 ```mysql
 SELECT * FROM tb_name;
 SELECT column_name FROM tb_name;
-SELECT * FROM tb_name WHERE condition;
+SELECT * FROM tb_name WHERE condition; -- '=', '>', '<', LIKE
 SELECT * FROM tb_name WHERE condition ORDER BY column_name DESC;
 
 SELECT column_from_different_tb
 FROM tb_1_name
 JOIN tb_2_name
-ON tb_1.column_name = tb_2.column_name -- reference;
+ON tb_1.column_name = tb_2.column_name; -- reference
+
+SELECT DISTINCT column_1_name, column_2_name, ...
+FROM tb_name
+AS alias_name;
+
+SELECT COUNT(column_name) AS c_name
+FROM tb_name;
+
+SELECT *
+FROM tb_name
+LIMIT num;
 ```
 
 update values:
@@ -68,5 +83,10 @@ WHERE condition;
 delete values:
 ```mysql
 DELETE FROM tb_name WHERE condition;
+```
+
+delete table:
+```mysql
+DROP TABLE tb_name;
 ```
 
