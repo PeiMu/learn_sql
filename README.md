@@ -1,25 +1,11 @@
-# python-sql
+# Learn SQL
 
-## documents
-[How to Create and Manipulate SQL Databases with Python](https://www.freecodecamp.org/news/connect-python-with-sql/)
+## MySQL
 
-### keywords
-```python
-import mysql.connector
-from mysql.connector import Error
+## Sqlite
 
-# connect database
-connection = mysql.connector.connect(...)
+## python-sql
 
-# address cursor of database
-cursor = connection.cursor()
-# execute query command
-cursor.execute(query_cmd)
-# execute many query commands
-cursor.executemany(query_cmd, value_list)
-# commit query command
-connection.commit()
+## SAP
+### Open SQL
 
-# fetch all data
-result = cursor.fetchall()
-```
